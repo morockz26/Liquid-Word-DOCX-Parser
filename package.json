@@ -1,0 +1,37 @@
+{
+  "name": "docx-parser",
+  "version": "1.0.0",
+  "description": "For parsing docx files with liquid templating language",
+  "main": "src/index.js",
+  "keywords": [
+    "docx",
+    "pptx",
+    "templates",
+    "template",
+    "templater",
+    "templating",
+    "report",
+    "xlsx",
+    "generation",
+    "generate",
+    "generator",
+    "microsoft office",
+    "microsoft word",
+    "microsoft excel",
+    "create",
+    "make",
+    "Office Open XML",
+    "creator"
+  ],
+  "scripts": {
+    "generate": "node src/index.js",
+    "test": "npm run test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jszip": "^3.10.1",
+    "liquidjs": "^10.9.2",
+    "minimist": "^1.2.8"
+  }
+}

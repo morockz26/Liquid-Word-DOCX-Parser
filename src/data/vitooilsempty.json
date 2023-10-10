@@ -1,0 +1,118 @@
+{
+  "lead": {
+      "id": 1060427,
+      "amount": "0.0",
+      "identifier": "The Mule",
+      "attachment_count": 0,
+      "status": "New Lead",
+      "description": "The Mule Business",
+      "photo_url": null,
+      "created_at": "2023-07-23 17:53:41 -0400",
+      "address": "",
+      "street": null,
+      "city": null,
+      "zip": null,
+      "state": null,
+      "country": null,
+      "owner": null,
+      "creator": "Mohammed Osumah (Wingmate)",
+      "businessname_cf": "The Mule",
+      "contacttype_cf": null,
+      "foodstyle_cf": "Bakery",
+      "corporatestore_cf": "No",
+      "name_cf": "Matt Johnny",
+      "titletype_cf": null,
+      "storephone_cf": null,
+      "phone_cf": null,
+      "email_cf": null,
+      "formsubject_cf": null,
+      "oilreductionpercent_cf": null,
+      "currentoilpriceperlitre_cf": null,
+      "currentminsfiltering_cf": null,
+      "currentfiltering_cf": null,
+      "numberoffryers_cf": null,
+      "labourrate_cf": null,
+      "currentoilamount_cf": null,
+      "unit_cf": null
+  },
+  "campaign": {
+      "id": "1425",
+      "name": "Vito Oil Systems Inc.",
+      "logo_url": "https://gopherleads.s3.us-west-2.amazonaws.com/Oil%20Drip_Made%20in%20Germany.png",
+      "campaign_variables": []
+  },
+  "purchases": [
+      {
+          "price": 4395,
+          "name": "VITO VL oil filter system",
+          "description": "Filtration Power: up to 210 lb per min.\nFiltration Time: approx. 6 min.\nWidth: 7.3”, height: 21.7”, length: 7.9” weight: 20 lb",
+          "purchasable": {
+              "price": 4395,
+              "name": "VITO VL oil filter system",
+              "description": "Filtration Power: up to 210 lb per min.\nFiltration Time: approx. 6 min.\nWidth: 7.3”, height: 21.7”, length: 7.9” weight: 20 lb",
+              "type_cf": "Machine"
+          },
+          "quantity_cf": 1
+      },
+      {
+          "price": 329,
+          "name": "Particle Filter V50/80/VL 100pcs",
+          "description": null,
+          "purchasable": {
+              "price": 329,
+              "name": "Particle Filter V50/80/VL 100pcs",
+              "description": null,
+              "type_cf": "Filter"
+          },
+          "quantity_cf": 1
+      },
+      {
+          "price": 695,
+          "name": "FT 440 Oil Oil Tester",
+          "description": "Measures oil health to determine disposal point",
+          "purchasable": {
+              "price": 695,
+              "name": "FT 440 Oil Oil Tester",
+              "description": "Measures oil health to determine disposal point",
+              "type_cf": "Filter"
+          },
+          "quantity_cf": 1
+      },
+      {
+          "price": 215,
+          "name": "FryQuip Regular Scoop (1 7/8\" thick)",
+          "description": "Fits Pitco and other tube fryers with 1 7/8\" gap between tubes.",
+          "purchasable": {
+              "price": 215,
+              "name": "FryQuip Regular Scoop (1 7/8\" thick)",
+              "description": "Fits Pitco and other tube fryers with 1 7/8\" gap between tubes.",
+              "type_cf": "Filter"
+          },
+          "quantity_cf": 1
+      },
+      {
+          "price": 345,
+          "name": "FryQuip Sediment Basket - 40",
+          "description": "Fits Garland, Frymaster and Quest open pot gas fryers 35-40 lb gas fryers",
+          "purchasable": {
+              "price": 345,
+              "name": "FryQuip Sediment Basket - 40",
+              "description": "Fits Garland, Frymaster and Quest open pot gas fryers 35-40 lb gas fryers",
+              "type_cf": "Filter"
+          },
+          "quantity_cf": 0
+      },
+      {
+          "price": 0,
+          "name": "Delivery & Training",
+          "description": null,
+          "purchasable": {
+              "price": 0,
+              "name": "Delivery & Training",
+              "description": null,
+              "type_cf": "Labour"
+          },
+          "quantity_cf": 0
+      }
+  ]
+}

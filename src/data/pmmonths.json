@@ -1,0 +1,112 @@
+{
+  "lead": {
+      "id": 1007,
+      "amount": "0.0",
+      "identifier": "Issue #1007",
+      "attachment_count": 0,
+      "status": "Received / This is a Long one",
+      "description": "Bowman Ville",
+      "photo_url": null,
+      "created_at": "2023-06-12 07:58:23 -0400",
+      "address": "2 Spry Ave, Bowmanville, ON L1C 3T3, Canada",
+      "street": "2 Spry Avenue",
+      "city": "Bowmanville",
+      "zip": "L1C 3T3",
+      "state": "Ontario",
+      "country": "Canada",
+      "owner": null,
+      "creator": "Aiden Manager",
+      "phone_cf": "pho phi yung",
+      "chooseone_cf": "one",
+      "select_cf": null,
+      "choosesome_cf": [
+          "many",
+          "some"
+      ],
+      "secondwebonly_cf": "kk",
+      "onlyweb_cf": "lol",
+      "anewone_cf": "Not this",
+      "number_cf": "90",
+      "date_cf": "2023-06-22T00:00:00-04:00",
+      "dateandtime_cf": "2023-06-14T00:00:00-04:00",
+      "blahtable_cf": null,
+      "newtable_cf": null,
+      "ssss_cf": null,
+      "d_cf": null,
+      "hellos_cf": null,
+      "sssss_cf": null,
+      "blahhh_cf": null,
+      "his_cf": null,
+      "hello_cf": null,
+      "helloss_cf": null,
+      "s_cf": null,
+      "selecttwo_cf": null,
+      "ssssss_cf": null,
+      "hhiiii_cf": null,
+      "ss_cf": null,
+      "hi_cf": null,
+      "pmmonths_cf": [
+          "January",
+          "February",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "December"
+      ]
+  },
+  "campaign": {
+      "id": "1",
+      "name": "GTA Environmental Inc.",
+      "logo_url": "",
+      "campaign_variables": []
+  },
+  "purchases": [
+      {
+          "price": 50,
+          "name": "milk",
+          "description": null,
+          "purchasable": {
+              "price": 10,
+              "name": "milk",
+              "description": null,
+              "milk_cf": "cow",
+              "egg_cf": null,
+              "water_cf": null,
+              "rice_cf": null,
+              "beans_cf": null,
+              "chicken_cf": null
+          },
+          "potato_cf": "golden",
+          "two_cf": "1",
+          "five_cf": "lol\n",
+          "dadate_cf": null,
+          "afterdadate_cf": null,
+          "lastcolumn_cf": null
+      },
+      {
+          "price": 200,
+          "name": "milk",
+          "description": null,
+          "purchasable": {
+              "price": 10,
+              "name": "milk",
+              "description": null,
+              "milk_cf": "cow",
+              "egg_cf": null,
+              "water_cf": null,
+              "rice_cf": null,
+              "beans_cf": null,
+              "chicken_cf": null
+          },
+          "potato_cf": "golden",
+          "two_cf": "1",
+          "five_cf": "lol\n",
+          "dadate_cf": null,
+          "afterdadate_cf": null,
+          "lastcolumn_cf": null
+      }
+  ]
+}

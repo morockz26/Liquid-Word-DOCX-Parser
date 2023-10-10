@@ -1,0 +1,6 @@
+npm run generate -- -d data/phelpsuniform.json --f XMLs/PhelpsProposal.docx
+npm run generate -- -d data/phelpsuniform.json --f "XMLs/PhelpsProposal - Copy.docx"
+npm run generate -- -d data/radioshack.json --f "XMLs/Mo's Template.docx"
+npm run generate -- -d data/radioshack.json --f "XMLs/Document.docx"
+npm run generate -- -d data/pmmonths.json --f "./XMLs/downloaded_doc.docx"
+npm run generate -- -d data/themule.json --f "XMLs/VitoOilSystems.docx"

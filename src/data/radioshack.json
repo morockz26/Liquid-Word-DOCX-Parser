@@ -1,0 +1,118 @@
+{
+  "lead": {
+    "id": 804262,
+    "amount": "111.0",
+    "identifier": "Radio Shack",
+    "attachment_count": 2,
+    "status": "Assigned to Rep",
+    "description": "Jsjsja",
+    "photo_url": "https://gopherleads.s3-us-west-2.amazonaws.com/radioshack-b9395dd0-6dc0-4441-8c14-5392f0df041f.jpg",
+    "created_at": "2023-01-09 12:48:21 -0500",
+    "address": "180 Bloor St W, Toronto, ON M5S 1T6, Canada",
+    "street": "180 Bloor Street West",
+    "city": "Toronto",
+    "zip": "M5S 1T6",
+    "state": "Ontario",
+    "country": "Canada",
+    "owner": "Carter Mills",
+    "creator": "Meir Cohen (Wingmate)",
+    "name_cf": "Radio Shack",
+    "email_cf": "hello",
+    "lineofbusiness_cf": [],
+    "number_cf": "",
+    "tanksize_cf": [],
+    "garbageviolations_cf": [],
+    "machinetype_cf": [],
+    "jobberclientid_cf": null,
+    "timeofmeeting_cf": null,
+    "pickupdate_cf": null,
+    "foodtype_cf": null,
+    "competitor_cf": null,
+    "contacted_cf": null,
+    "testtable_cf": [],
+    "uniformtype_cf": null,
+    "datetime_cf": null
+  },
+  "campaign": {
+    "id": "76",
+    "name": "Wingmate VIP - Commercial",
+    "logo_url": "https://gopherleads.s3-us-west-2.amazonaws.com/76-1682448357-wingmate-favicon.png",
+    "campaign_variables": [
+        {
+            "identifier": "new",
+            "value": "1"
+        }
+    ]
+  },
+  "purchases": [
+    {
+      "price": 10.25,
+      "name": "Thermostat Replacement",
+      "description": "second hand",
+      "purchasable": {
+          "price": 300,
+          "name": "Thermostat Replacement",
+          "description": "second hand",
+          "replacementcost_cf": 11.5,
+          "select_cf": null,
+          "multislect_cf": null
+      },
+      "renthrs_cf": null,
+      "count_cf": null,
+      "unittotal_cf": null,
+      "select_cf": null,
+      "description_cf": null
+    },
+    {
+      "price": 13,
+      "name": "Training Service",
+      "description": "$/hr",
+      "purchasable": {
+          "price": 13,
+          "name": "Training Service",
+          "description": "$/hr",
+          "sku_cf": "A3",
+          "deliveryfee_cf": 3,
+          "maintenancefee_cf": 69
+      },
+      "quantity_cf": null,
+      "maint_cf": null,
+      "tax_cf": null,
+      "total_cf": null
+    },
+    {
+      "price": 15,
+      "name": "Premium Service",
+      "description": "$/hr",
+      "purchasable": {
+          "price": 15,
+          "name": "Premium Service",
+          "description": "$/hr",
+          "sku_cf": "A2",
+          "deliveryfee_cf": 3,
+          "maintenancefee_cf": null
+      },
+      "quantity_cf": null,
+      "maint_cf": null,
+      "tax_cf": null,
+      "total_cf": null
+    },
+    {
+      "price": 10,
+      "name": "Basic Service",
+      "description": "$/hr",
+      "purchasable": {
+          "price": 10,
+          "name": "Basic Service",
+          "description": "$/hr",
+          "sku_cf": "A1",
+          "deliveryfee_cf": 2,
+          "maintenancefee_cf": 4
+      },
+      "quantity_cf": null,
+      "maint_cf": null,
+      "tax_cf": null,
+      "total_cf": null
+    }
+  ]
+}

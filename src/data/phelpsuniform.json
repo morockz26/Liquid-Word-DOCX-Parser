@@ -1,0 +1,122 @@
+{
+  "lead": {
+      "id": 919996,
+      "amount": "0.0",
+      "identifier": "Phelps Uniform",
+      "attachment_count": 0,
+      "status": "Meetings and Tour",
+      "description": "Phelps - Rental",
+      "photo_url": null,
+      "created_at": "2023-03-09 14:08:13 -0500",
+      "address": "3206 Hershey Ave Ste 4, Muscatine, IA 52761, USA",
+      "street": "3206 Hershey Avenue",
+      "city": "Muscatine",
+      "zip": "52761",
+      "state": "Iowa",
+      "country": "United States",
+      "owner": "TJ Long",
+      "creator": "TJ Long",
+      "businessname_cf": "Phelps Uniform",
+      "estimatedweeklyvalue_cf": null,
+      "contactname_cf": "TJ Long",
+      "phonenumber_cf": "5635063414",
+      "email_cf": "tlong@phelpsusa.com",
+      "leadsource_cf": "Call In",
+      "typeofcontract_cf": "Existing Customer",
+      "divisionofinterest_cf": [
+          "Rental"
+      ],
+      "competitor_cf": "No Program",
+      "cxd_cf": "2023-03-12T06:00:00+00:00",
+      "willingnesstoswitch_cf": "5 Ready to Change Soon",
+      "painpoints_cf": [
+          "Pricing"
+      ],
+      "alliantcustomerdata_cf": null,
+      "proposalnum_cf": null,
+      "expireson_cf": null,
+      "priceincreases_cf": null,
+      "flatgoodmaintenance_cf": null,
+      "firstname_cf": null,
+      "lastname_cf": null,
+      "contractlength_cf": "24",
+      "priceinc_cf": null,
+      "paymentterms_cf": null,
+      "zipcode_cf": null,
+      "notes_cf": null
+  },
+  "campaign": {
+      "id": "1259",
+      "name": "Phelps Rental",
+      "logo_url": "https://gopherleads.s3-us-west-2.amazonaws.com/1259-1678288550-us-white.png",
+      "campaign_variables": []
+  },
+  "purchases": [
+      {
+          "price": 0.08,
+          "name": "BLACK BISTRO NAPKIN",
+          "description": "6297",
+          "purchasable": {
+              "price": 0.08,
+              "name": "BLACK BISTRO NAPKIN",
+              "description": "6297",
+              "sku_cf": "6297",
+              "totalprotectioncategory_cf": null,
+              "flatgoodmaint_cf": "Napkins",
+              "alliantsupergroup_cf": "Table",
+              "purchaseprice_cf": 1.08,
+              "billedinventory_cf": 100,
+              "delivery_cf": 50,
+              "productcategory_cf": null
+          },
+          "invuser_cf": 7,
+          "users_cf": 10,
+          "program_cf": "Rental",
+          "frequency_cf": "Weekly"
+      },
+      {
+          "price": 0.58,
+          "name": "LWT CREW PANT-KH",
+          "description": "PT2LKH",
+          "purchasable": {
+              "price": 0.58,
+              "name": "LWT CREW PANT-KH",
+              "description": "PT2LKH",
+              "sku_cf": "PT2LKH",
+              "totalprotectioncategory_cf": "Industrial",
+              "flatgoodmaint_cf": "Garment",
+              "alliantsupergroup_cf": "Pant",
+              "purchaseprice_cf": 21.83,
+              "billedinventory_cf": 100,
+              "delivery_cf": 45,
+              "productcategory_cf": null
+          },
+          "invuser_cf": 4,
+          "users_cf": 10,
+          "program_cf": "Rental",
+          "frequency_cf": null
+      },
+      {
+          "price": 1.07,
+          "name": "36\" DUST MOP",
+          "description": "1822",
+          "purchasable": {
+              "price": 1.07,
+              "name": "36\" DUST MOP",
+              "description": "1822",
+              "sku_cf": "1822",
+              "totalprotectioncategory_cf": null,
+              "flatgoodmaint_cf": "Mops",
+              "alliantsupergroup_cf": null,
+              "purchaseprice_cf": 8.5,
+              "billedinventory_cf": 100,
+              "delivery_cf": 100,
+              "productcategory_cf": null
+          },
+          "invuser_cf": null,
+          "users_cf": null,
+          "program_cf": null,
+          "frequency_cf": "Bi-Weekly"
+      }
+  ]
+}
