@@ -9,7 +9,9 @@ const {
   FOR_LOOP_REGEX,
   END_FOR_REGEX,
   TABLE_ROW_REGEX,
+  LIQUID_REGEX_PATTERN
 } = require("./utils/constants");
+const copyPaste = require('copy-paste');
 
 function getFilePath(fileName) {
   return path.resolve(__dirname, fileName)
@@ -58,8 +60,17 @@ function replaceSubstring(str, startIdx, endIdx, newSubstr) {
   return prefix + newSubstr + suffix;
 }
 
+function registerCurrencyFilter(engine) {
+  engine.registerFilter("currency", (value) => {
+    const numberValue = parseFloat(value?.toString());
+    return !isNaN(numberValue) ? `$${numberValue.toFixed(2)}` : null;
+  });
+}
+
 function parseLiquidString(liquidString, data) {
   const engine = new Liquid();
+
+  registerCurrencyFilter(engine);
 
   const parsedString = engine.parseAndRenderSync(liquidString, data);
 
@@ -88,59 +99,38 @@ function formatTableXmlStringForLiquid(xmlString) {
   return formattedString;
 }
 
-// async function parseXmlFile(xmlString, data) {
-//   const formattedTableString = formatTableXmlStringForLiquid(xmlString);
-//   const parsedXmlString = parseLiquidString(formatBodyXmlStringForLiquid(formattedTableString), data);
-  
-//   return parsedXmlString;
-// }
+const specialCharacterMap = {
+  "&lt;": "<",
+  "&gt;": ">",
+  "&amp;": "&"
+}
 
-// async function generateDocx(data) {
-//   // Get the XML files from the source location
-//   const zipFiles = await getFile();
+function escapeSpecialCharacters(xmlString) {
+  // TODO: Need to fix the special characters inside liquid tags
+  return xmlString
+}
 
-//   // Combine XML strings with a separator
-//   const separator = "<!-- XML_SEPARATOR -->";
+function cleanXml(xmlString) {
+  // TODO: Need to clean the xmlstring
+  // The paragraphs are still in a <w:p> tag
+  // Find all liquid tags, and find a way to put all the text
+  // Account for page breaks, xml:space="preserve", etc
+  // back together in one <w:t>
+  return escapeSpecialCharacters(xmlString);
+}
 
-//   const combinedStringArray = await Promise.all(
-//     Object.keys(zipFiles.files).map(async (fileKey) => {
-//       if (fileKey.startsWith("word/") && fileKey.endsWith(".xml")) {
-//         const xmlString = await zipFiles.files[fileKey].async("string");
-//         return xmlString + separator;
-//       }
-//       return separator;
-//     })
-//   );
-
-//   const combinedXmlString = combinedStringArray.join("");
-
-//   // Parse the combined XML string
-//   const parsedXmlString = await parseXmlFile(combinedXmlString, data);
-
-//   // Split the parsed XML string back into individual XML strings
-//   const parsedXmlArray = parsedXmlString.split(separator);
-
-//   // Update the XML content in the zipFiles object
-//   Object.keys(zipFiles.files).map((fileKey, index) => {
-//     if (fileKey.startsWith("word/") && fileKey.endsWith(".xml")) {
-//       zipFiles.file(fileKey, parsedXmlArray[index]);
-//     }
-//   });
-
-//   // Generate the updated zip file
-//   const updatedZipData = await zipFiles.generateAsync({ type: "nodebuffer" });
-
-//   // Save the updated zip file
-//   const outputPath = path.resolve(__dirname, "XMLs/parsed/output.docx");
-//   await fs.promises.writeFile(outputPath, updatedZipData);
-
-//   console.log("Document XML updated and saved to:", outputPath);
-// }
-
-async function parseXmlFile(xmlFile, data) {
+async function parseXmlFile(xmlFile, data, fileKey) {
   const xmlString = await xmlFile.async("string");
 
-  const parsedXmlString  =  parseLiquidString(formatTableXmlStringForLiquid(xmlString), data);
+  const cleanedXml = cleanXml(xmlString);
+
+  // Copy the parsed XML string to the clipboard
+  if (fileKey == "word/document.xml") {
+    console.log(fileKey, cleanedXml.length)
+    await copyPaste.copy(formatTableXmlStringForLiquid(cleanedXml));
+  }
+
+  const parsedXmlString  =  parseLiquidString(formatTableXmlStringForLiquid(cleanedXml), data);
 
   return parsedXmlString;
 }
@@ -150,7 +140,7 @@ async function generateDocx(data) {
 
   const parsedPromises = Object.keys(zipFiles.files).map(async (fileKey) => {
     if (fileKey.startsWith("word/") && fileKey.endsWith(".xml")) {
-      const parsedXmlString = await parseXmlFile(zipFiles.files[fileKey], data);
+      const parsedXmlString = await parseXmlFile(zipFiles.files[fileKey], data, fileKey);
 
       // Update the XML content in the zipFiles object
       zipFiles.file(fileKey, parsedXmlString);
@@ -163,7 +153,7 @@ async function generateDocx(data) {
   const updatedZipFile = await zipFiles.generateAsync({ type: "nodebuffer" });
 
   // Save the updated zip file
-  const outputPath = path.resolve(__dirname, "XMLs/parsed/output.docx");
+  const outputPath = path.resolve(__dirname, "output/output.docx");
   await fs.promises.writeFile(outputPath, updatedZipFile);
 
   console.log("Document XML updated and saved to:", outputPath)

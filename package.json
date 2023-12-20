@@ -24,14 +24,15 @@
     "creator"
   ],
   "scripts": {
-    "generate": "node src/index.js",
-    "test": "npm run test"
+    "generate": "node src/index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "clipboardy": "^4.0.0",
+    "copy-paste": "^1.5.3",
     "jszip": "^3.10.1",
-    "liquidjs": "^10.9.2",
+    "liquidjs": "^9.39.2",
     "minimist": "^1.2.8"
   }
 }

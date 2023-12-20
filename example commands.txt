@@ -1,6 +1,8 @@
-npm run generate -- -d data/phelpsuniform.json --f XMLs/PhelpsProposal.docx
-npm run generate -- -d data/phelpsuniform.json --f "XMLs/PhelpsProposal - Copy.docx"
-npm run generate -- -d data/radioshack.json --f "XMLs/Mo's Template.docx"
-npm run generate -- -d data/radioshack.json --f "XMLs/Document.docx"
-npm run generate -- -d data/pmmonths.json --f "./XMLs/downloaded_doc.docx"
-npm run generate -- -d data/themule.json --f "XMLs/VitoOilSystems.docx"
+npm run generate -- -d data/phelpsuniform.json --f documents/Phelps/PhelpsProposal.docx
+npm run generate -- -d data/radioshack.json --f "documents/Mo's Template.docx"
+npm run generate -- -d data/radioshack.json --f "documents/Document.docx"
+npm run generate -- -d data/pmmonths.json --f "./documents/downloaded_doc.docx"
+npm run generate -- -d data/themule.json --f "documents/Vito Oil/VitoOilSystems.docx"
+npm run generate -- -d data/metrodata.json --f "documents/Metro Uniform & Linen/Service Agreement.docx"
+npm run generate -- -d data/metrodata.json --f "documents/Metro Uniform & Linen/Service Proposal.docx"
+npm run generate -- -d data/pergolas.json --f "documents/Pergolas/Pergola Screen Template.docx"
