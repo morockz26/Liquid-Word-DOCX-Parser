@@ -3,7 +3,7 @@
     "id": 1221047,
     "amount": "0.0",
     "identifier": "Business Name (EasyDocs Testing)",
-    "attachment_count": 5,
+    "attachment_count": 6,
     "status": "New Lead",
     "description": "test",
     "photo_url": null,
@@ -28,6 +28,7 @@
     "times_cf": null,
     "pricelevel_cf": "Level 1",
     "frequency_cf": "Multiple Per Week",
+    "defe_cf": null,
     "arcnapkins_cf": "2",
     "arctowels_cf": "2",
     "addlinenmaintenance_cf": "Yes",
@@ -36,7 +37,6 @@
     "uniformmaintenance_cf": "30",
     "embroideryfee_cf": null,
     "embroiderypayment_cf": "One Time",
-    "defe_cf": null,
     "minimumservicecharge_cf": 50,
     "dateoffirstservice_cf": "2023-08-13T00:00:00-04:00",
     "agreementlength_cf": 6,
@@ -311,13 +311,101 @@
       "quantity_cf": 5,
       "size_cf": null,
       "notes_cf": null
+    },
+    {
+      "price": null,
+      "name": "BAR MOP",
+      "description": null,
+      "purchasable": {
+        "price": 0.22,
+        "name": "BAR MOP",
+        "description": null,
+        "color_cf": null,
+        "sku_cf": "31101",
+        "supergroup_cf": "DUST_CONTROL",
+        "lowprice_cf": 0.15,
+        "mediumprice_cf": 0.18,
+        "level3price_cf": 0.22,
+        "purchaseprice_cf": 0.38,
+        "replacementcost_cf": 1.55,
+        "arc_cf": "Yes"
+      },
+      "inventory_cf": 10,
+      "quantity_cf": 5,
+      "notes_cf": "Bar Mops"
+    },
+    {
+      "price": null,
+      "name": "LAUNDRY BAG",
+      "description": null,
+      "purchasable": {
+        "price": 0.75,
+        "name": "LAUNDRY BAG",
+        "description": null,
+        "color_cf": null,
+        "sku_cf": "50001",
+        "supergroup_cf": "DUST_CONTROL",
+        "lowprice_cf": 0.35,
+        "mediumprice_cf": 0.5,
+        "level3price_cf": 0.75,
+        "purchaseprice_cf": 4.95,
+        "replacementcost_cf": 4.95,
+        "arc_cf": "No"
+      },
+      "inventory_cf": 10,
+      "quantity_cf": 5,
+      "notes_cf": "for laundry"
+    },
+    {
+      "price": null,
+      "name": "BAG STAND",
+      "description": null,
+      "purchasable": {
+        "price": 0,
+        "name": "BAG STAND",
+        "description": null,
+        "color_cf": null,
+        "sku_cf": "50003",
+        "supergroup_cf": "ANCILLARY",
+        "lowprice_cf": 0,
+        "mediumprice_cf": 0,
+        "level3price_cf": 0,
+        "purchaseprice_cf": 39.95,
+        "replacementcost_cf": 39.95,
+        "arc_cf": "No"
+      },
+      "inventory_cf": 2,
+      "quantity_cf": 1,
+      "notes_cf": "bag stand"
+    },
+    {
+      "price": null,
+      "name": "DUST MOP HANDLE",
+      "description": null,
+      "purchasable": {
+        "price": 0,
+        "name": "DUST MOP HANDLE",
+        "description": null,
+        "color_cf": null,
+        "sku_cf": "50012",
+        "supergroup_cf": "ANCILLARY",
+        "lowprice_cf": 0,
+        "mediumprice_cf": 0,
+        "level3price_cf": 0,
+        "purchaseprice_cf": 6.75,
+        "replacementcost_cf": 9.95,
+        "arc_cf": "No"
+      },
+      "inventory_cf": 20,
+      "quantity_cf": 10,
+      "notes_cf": "for the dust mops"
     }
   ],
   "primary_contact": {
     "name": "Aiden Carnegie",
     "email": "aiden@email.com",
-    "title_cf": null,
+    "title_cf": "",
     "phone_cf": "64777",
-    "mobile_cf": null
+    "mobile_cf": ""
   }
 }
