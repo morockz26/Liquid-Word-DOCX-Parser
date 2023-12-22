@@ -1,0 +1,19 @@
+{
+  "extends": ["stylelint-config-recommended-scss"],
+  "plugins": [
+  ],
+  "rules": {
+      "indentation": 2,
+      "font-family-no-missing-generic-family-keyword": null,
+      "declaration-block-semicolon-newline-after": "always",
+      "declaration-colon-space-after": "always",
+      "declaration-colon-space-before": "never",
+      "block-closing-brace-newline-before": "always",
+      "block-opening-brace-newline-after": "always",
+      "block-opening-brace-space-before": "always",
+      "declaration-block-no-redundant-longhand-properties": true,
+      "block-closing-brace-newline-after": "always",
+      "max-empty-lines": 1,
+      "declaration-block-trailing-semicolon": "always"
+  }
+}

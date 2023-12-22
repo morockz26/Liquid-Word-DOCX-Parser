@@ -1,0 +1,103 @@
+.App {
+  :root {
+    // Spacing
+    --space-xxs: 4px;
+    --space-xs: 8px;
+    --space-s: 16px;
+    --space-m: 24px;
+    --space-l: 32px;
+    --space-xl: 48px;
+    --space-xxl: 64px;
+    --space-xxxl: 96px;
+    
+    // Colors
+    --background-800: #001927;
+    --background-700: #223846;
+    --background-600: #435765;
+    --background-500: #657684;
+    --background-400: #8795A3;
+    --background-300: #A8B4C2;
+    --background-200: #CAD3E1;
+    --background-100: #E6EBF3;
+  
+    --black-300: #000000;
+    --black-200: #141414;
+    --black-100: #2C2C2C;
+  
+    --gray-800: #444444;
+    --gray-700: #666666;
+    --gray-600: #888888;
+    --gray-500: #BBBBBB;
+    --gray-400: #DDDDDD;
+    --gray-300: #F0F0F0;
+    --gray-200: #F5F5F5;
+    --gray-100: #FFFFFF;
+  
+    --primary: #FE3E59;
+    --primary-500: #FE5E75;
+    --primary-400: #FE7E90;
+    --primary-300: #FF9FAC;
+    --primary-200: #FFBFC8;
+    --primary-100: #FFDFE3;
+  
+    --secondary: #FF8D30;
+    --secondary-500: #FFA052;
+    --secondary-400: #FFB375;
+    --secondary-300: #FFC698;
+    --secondary-200: #FFD9BA;
+    --secondary-100: #FFECDD;
+  
+    --peach-gradient: linear-gradient(to right, #FFC698, #FE3E59);
+    --brand-gradient: linear-gradient(to right, #FFA052, #FF2182);
+    --blue-violet-gradient: linear-gradient(to right, #C544FC, #5B56D7);
+    --blue-gradient: linear-gradient(to right, #00C2FF, #084DFF);
+  
+    --tertiary: #084DFF;
+    --tertiary-600: #316BFF;
+    --tertiary-500: #5A88FF;
+    --tertiary-400: #84A6FF;
+    --tertiary-300: #ADC4FF;
+    --tertiary-200: #D6E1FF;
+    --tertiary-100: #E9EFFF;
+  
+    --error-900: #6F102D;
+    --error-800: #861B32;
+    --error-700: #A72A3B;
+    --error-600: #C73E45;
+    --error-500: #E85A55;
+    --error-400: #F18C7E;
+    --error-300: #F8AC99;
+    --error-200: #FCCFBC;
+    --error-100: #FDE9DD;
+  
+    --success-900: #18640F;
+    --success-800: #29791A;
+    --success-700: #429629;
+    --success-600: #5EB33C;
+    --success-500: #7FD153;
+    --success-400: #A6E37C;
+    --success-300: #C3F199;
+    --success-200: #DEFABE;
+    --success-100: #F0FCDE;
+  
+    --warning-900: #6C6A0D;
+    --warning-800: #838116;
+    --warning-700: #A2A023;
+    --warning-600: #C2C033;
+    --warning-500: #FFCF00;
+    --warning-400: #FFE266;
+    --warning-300: #F6F590;
+    --warning-200: #FCFBB6;
+    --warning-100: #FDFDDA;
+  
+    --info-900: #0D2D78;
+    --info-800: #164192;
+    --info-700: #235DB5;
+    --info-600: #337DD8;
+    --info-500: #46A1FC;
+    --info-400: #74BFFD;
+    --info-300: #8FD2FE;
+    --info-200: #B5E4FE;
+    --info-100: #DAF3FE;
+  }
+}

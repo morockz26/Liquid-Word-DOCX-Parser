@@ -1,38 +1,141 @@
 {
-  "name": "docx-parser",
-  "version": "1.0.0",
-  "description": "For parsing docx files with liquid templating language",
-  "main": "src/index.js",
-  "keywords": [
-    "docx",
-    "pptx",
-    "templates",
-    "template",
-    "templater",
-    "templating",
-    "report",
-    "xlsx",
-    "generation",
-    "generate",
-    "generator",
-    "microsoft office",
-    "microsoft word",
-    "microsoft excel",
-    "create",
-    "make",
-    "Office Open XML",
-    "creator"
-  ],
-  "scripts": {
-    "generate": "node src/index.js"
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": "18.17.1"
   },
-  "author": "",
-  "license": "ISC",
+  "publishConfig": {
+    "registry": "https://wingmate.jfrog.io/artifactory/api/npm/default-npm-virtual/"
+  },
   "dependencies": {
+    "@testing-library/react": "^12.1.3",
+    "@types/copy-paste": "^1.1.33",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.68",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "@wingmate/toolkit": "^2.0.13",
     "clipboardy": "^4.0.0",
     "copy-paste": "^1.5.3",
+    "crypto-browserify": "^3.12.0",
     "jszip": "^3.10.1",
     "liquidjs": "^9.39.2",
-    "minimist": "^1.2.8"
+    "minimist": "^1.2.8",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^6.17.0",
+    "react-scripts": "5.0.1",
+    "typescript": "^4.9.5",
+    "web-vitals": "^2.1.4",
+    "wm-ui-toolkit": "^1.6.37"
+  },
+  "scripts": {
+    "dev": "node scripts/start.js",
+    "lint": "eslint -c .eslintrc.js --ext .js,.jsx,.tsx .",
+    "lint:fix": "eslint -c .eslintrc.js --ext .js,.jsx,.ts,.tsx --fix .",
+    "start": "node server/server.js",
+    "stylelint": "stylelint \"src/**/*.scss\" --config ./stylelintrc.json",
+    "stylelint:fix": "stylelint \"src/**/*.scss\" --fix --config ./stylelintrc.json",
+    "test": "jest --collectCoverage --config ./jest.config.js",
+    "test:debug": "jest  --collectCoverage --config ./jest.config.js --debug",
+    "test:noCoverage": "jest --config ./jest.config.js",
+    "test:openHandles": "jest  --collectCoverage --config ./jest.config.js --debug --detectOpenHandles",
+    "test:pipeline": "jest --collectCoverage --maxParallel=4 --maxWorkers=4 --config ./jest.config.js",
+    "test:watch": "jest --watch --collectCoverage --config ./jest.config.js",
+    "verify": "npm run stylelint && npm run lint && npm run test:openHandles",
+    "tsc": "tsc"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "react-app",
+      "@babel/preset-typescript"
+    ],
+    "plugins": [
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "legacy": true
+        }
+      ]
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/eslint-parser": "^7.18.2",
+    "@babel/plugin-proposal-decorators": "^7.17.9",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@babel/preset-react": "^7.16.5",
+    "@babel/preset-typescript": "^7.23.3",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
+    "@svgr/webpack": "^5.5.0",
+    "@types/jest": "^29.5.11",
+    "@types/react": "^18.2.39",
+    "@types/react-dom": "^18.2.17",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
+    "babel-jest": "^27.4.2",
+    "babel-loader": "^8.2.3",
+    "babel-plugin-named-asset-import": "^0.3.8",
+    "babel-preset-react-app": "^10.0.1",
+    "case-sensitive-paths-webpack-plugin": "^2.4.0",
+    "css-loader": "^6.5.1",
+    "css-minimizer-webpack-plugin": "^3.2.0",
+    "error-overlay-webpack-plugin": "^1.1.1",
+    "eslint": "^8.54.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.1.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-config-react-app": "^7.0.0",
+    "eslint-plugin-custom-rules": "file:./eslint-custom-rules",
+    "eslint-plugin-cypress": "^2.12.1",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-sort-destructure-keys": "^1.4.0",
+    "eslint-webpack-plugin": "^3.1.1",
+    "file-loader": "^6.2.0",
+    "fs-extra": "^10.0.0",
+    "jest": "^27.4.3",
+    "jest-resolve": "^27.4.2",
+    "jest-watch-typeahead": "^1.0.0",
+    "mini-css-extract-plugin": "^2.4.5",
+    "postcss": "^8.4.4",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-loader": "^6.2.1",
+    "postcss-normalize": "^10.0.1",
+    "postcss-preset-env": "^7.0.1",
+    "prettier": "2.8.2",
+    "prompts": "^2.4.2",
+    "sass": "^1.49.9",
+    "sass-loader": "^12.3.0",
+    "semver": "^7.3.5",
+    "source-map-loader": "^3.0.0",
+    "style-loader": "^3.3.1",
+    "stylelint": "^14.6.1",
+    "stylelint-config-recommended-scss": "^6.0.0",
+    "terser-webpack-plugin": "^5.2.5",
+    "typescript": "^4.9.5",
+    "webpack": "^5.64.4",
+    "webpack-dev-server": "^4.6.0",
+    "webpack-manifest-plugin": "^4.0.2",
+    "workbox-webpack-plugin": "^6.4.1"
   }
 }

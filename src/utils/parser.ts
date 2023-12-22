@@ -1,73 +1,70 @@
-"use strict";
-
-const argv = require('minimist')(process.argv.slice(2));
-const path = require("path");
-const fs = require("fs");
-const JSZip = require("jszip");
-const { Liquid } = require("liquidjs");
-const {
+import path from "path";
+import fs from "fs";
+import JSZip from "jszip";
+import copyPaste from "copy-paste";
+import minimist from "minimist";
+import { Liquid } from "liquidjs";
+import {
   FOR_LOOP_REGEX,
   END_FOR_REGEX,
   TABLE_ROW_REGEX,
-  LIQUID_REGEX_PATTERN
-} = require("./utils/constants");
-const copyPaste = require('copy-paste');
+  LIQUID_REGEX_PATTERN,
+  specialCharacterMap,
+} from "./constants";
 
-function getFilePath(fileName) {
-  return path.resolve(__dirname, fileName)
+const argv = minimist(process.argv.slice(2));
+
+function getFilePath(fileName: string) {
+  return path.resolve(__dirname, fileName);
 }
 
 async function getData() {
   const filePath = path.resolve(__dirname, argv.d);
-  try {
-    const data = await fs.promises.readFile(filePath, 'utf8');
-    return JSON.parse(data);
-  } catch (error) {
-    throw error;
-  }
+
+  const data = await fs.promises.readFile(filePath, "utf8");
+  return JSON.parse(data);
 }
 
 async function getFile() {
   const filePath = getFilePath(argv.f);
 
-  try {
-    const file = new JSZip.external.Promise((resolve, reject) => {
-      fs.readFile(filePath, function(err, data) {
-        if (err) {
-          reject(e);
-        } else {
-          resolve(data);
-        }
-      });
-    }).then(async (data) => {
-      return await JSZip.loadAsync(data);
-    })
+  const file = new JSZip.external.Promise((resolve, reject) => {
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(data);
+      }
+    });
+  }).then(async (data: any) => JSZip.loadAsync(data));
 
-    return file;
-  } catch (error) {
-    throw error;
-  }
+  return file;
 }
 
-function replaceSubstring(str, startIdx, endIdx, newSubstr) {
+function replaceSubstring(
+  str: string,
+  startIdx: number,
+  endIdx: number,
+  newSubstr: string
+) {
   if (startIdx < 0 || endIdx > str.length || startIdx > endIdx) {
-    throw new Error('Invalid start or end indexes.');
+    throw new Error("Invalid start or end indexes.");
   }
 
   const prefix = str.substring(0, startIdx);
   const suffix = str.substring(endIdx + 1);
-  
+
   return prefix + newSubstr + suffix;
 }
 
-function registerCurrencyFilter(engine) {
-  engine.registerFilter("currency", (value) => {
+function registerCurrencyFilter(engine: Liquid) {
+  engine.registerFilter("currency", (value: any) => {
     const numberValue = parseFloat(value?.toString());
-    return !isNaN(numberValue) ? `$${numberValue.toFixed(2)}` : null;
+    return !Number.isNaN(numberValue) ? `$${numberValue.toFixed(2)}` : null;
   });
 }
 
-function parseLiquidString(liquidString, data) {
+function parseLiquidString(liquidString: string, data: object) {
   const engine = new Liquid();
 
   registerCurrencyFilter(engine);
@@ -75,19 +72,25 @@ function parseLiquidString(liquidString, data) {
   const parsedString = engine.parseAndRenderSync(liquidString, data);
 
   return parsedString;
-};
+}
 
-function formatTableXmlStringForLiquid(xmlString) {
+function formatTableXmlStringForLiquid(xmlString: string) {
   let formattedString = xmlString;
   let match;
+
+  // eslint-disable-next-line no-cond-assign
   while ((match = TABLE_ROW_REGEX.exec(formattedString)) !== null) {
     let matchedString = match[0];
     const forLoopString = matchedString.match(FOR_LOOP_REGEX);
     const endForLoopString = matchedString.match(END_FOR_REGEX);
     if (forLoopString && endForLoopString) {
-      matchedString = matchedString.replace(forLoopString[0], '');
-      matchedString = matchedString.replace(endForLoopString[0], '');
-      matchedString = [forLoopString[0], matchedString, endForLoopString[0]].join('');
+      matchedString = matchedString.replace(forLoopString[0], "");
+      matchedString = matchedString.replace(endForLoopString[0], "");
+      matchedString = [
+        forLoopString[0],
+        matchedString,
+        endForLoopString[0],
+      ].join("");
       formattedString = replaceSubstring(
         formattedString,
         match.index,
@@ -99,18 +102,12 @@ function formatTableXmlStringForLiquid(xmlString) {
   return formattedString;
 }
 
-const specialCharacterMap = {
-  "&lt;": "<",
-  "&gt;": ">",
-  "&amp;": "&"
-}
-
-function escapeSpecialCharacters(xmlString) {
+export function escapeSpecialCharacters(xmlString: string) {
   // TODO: Need to fix the special characters inside liquid tags
-  return xmlString
+  return xmlString;
 }
 
-function cleanXml(xmlString) {
+export function cleanXml(xmlString: string) {
   // TODO: Need to clean the xmlstring
   // The paragraphs are still in a <w:p> tag
   // Find all liquid tags, and find a way to put all the text
@@ -119,28 +116,38 @@ function cleanXml(xmlString) {
   return escapeSpecialCharacters(xmlString);
 }
 
-async function parseXmlFile(xmlFile, data, fileKey) {
+export async function parseXmlFile(
+  xmlFile: JSZip.JSZipObject,
+  data: object,
+  fileKey: string
+) {
   const xmlString = await xmlFile.async("string");
 
   const cleanedXml = cleanXml(xmlString);
 
   // Copy the parsed XML string to the clipboard
-  if (fileKey == "word/document.xml") {
-    console.log(fileKey, cleanedXml.length)
-    await copyPaste.copy(formatTableXmlStringForLiquid(cleanedXml));
+  if (fileKey === "word/document.xml") {
+    copyPaste.copy(formatTableXmlStringForLiquid(cleanedXml));
   }
 
-  const parsedXmlString  =  parseLiquidString(formatTableXmlStringForLiquid(cleanedXml), data);
+  const parsedXmlString = parseLiquidString(
+    formatTableXmlStringForLiquid(cleanedXml),
+    data
+  );
 
   return parsedXmlString;
 }
 
-async function generateDocx(data) {
+export async function generateDocx(data: object) {
   const zipFiles = await getFile();
 
   const parsedPromises = Object.keys(zipFiles.files).map(async (fileKey) => {
     if (fileKey.startsWith("word/") && fileKey.endsWith(".xml")) {
-      const parsedXmlString = await parseXmlFile(zipFiles.files[fileKey], data, fileKey);
+      const parsedXmlString = await parseXmlFile(
+        zipFiles.files[fileKey],
+        data,
+        fileKey
+      );
 
       // Update the XML content in the zipFiles object
       zipFiles.file(fileKey, parsedXmlString);
@@ -155,16 +162,17 @@ async function generateDocx(data) {
   // Save the updated zip file
   const outputPath = path.resolve(__dirname, "output/output.docx");
   await fs.promises.writeFile(outputPath, updatedZipFile);
-
-  console.log("Document XML updated and saved to:", outputPath)
 }
 
 function main() {
   getData()
-  .then(async (data) => {
-    generateDocx(data);
-  })
-  .catch((err) => { console.log(err); })
+    .then(async (data) => {
+      generateDocx(data);
+    })
+    .catch((err) => {
+      // eslint-disable-next-line no-console
+      console.log(err);
+    });
 }
 
 main();
