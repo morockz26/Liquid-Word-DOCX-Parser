@@ -28,7 +28,7 @@
     "times_cf": null,
     "pricelevel_cf": "Level 1",
     "frequency_cf": "Multiple Per Week",
-    "defe_cf": null,
+    "defe_cf": "standard percentage",
     "arcnapkins_cf": "2",
     "arctowels_cf": "2",
     "addlinenmaintenance_cf": "Yes",
