@@ -14,7 +14,7 @@ const ErrorPage = lazy(() => import("./components/ErrorPage/ErrorPage"));
 const App: React.FC = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<div />}>
+      <Route path="/">
         <Route path="error">
           <Route
             path="404"
@@ -71,7 +71,11 @@ const App: React.FC = () => {
     )
   );
 
-  return <RouterProvider router={router} />;
+  return (
+    <div className="App">
+      <RouterProvider router={router} />
+    </div>
+  );
 };
 
 export default App;

@@ -100,4 +100,11 @@
     --info-200: #B5E4FE;
     --info-100: #DAF3FE;
   }
+
+  height: 100vh;
+
+  a, .Link {
+    color: var(--primary-color);
+    text-decoration: none;
+  }
 }
