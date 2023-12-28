@@ -178,8 +178,8 @@ function formatTableXmlStringForLiquid(xmlString) {
     var forLoopString = matchedString.match(constants_1.FOR_LOOP_REGEX);
     var endForLoopString = matchedString.match(constants_1.END_FOR_REGEX);
     if (forLoopString && endForLoopString) {
-      matchedString = matchedString.replace(forLoopString[0], "");
-      matchedString = matchedString.replace(endForLoopString[0], "");
+      matchedString = matchedString.replace(constants_1.FOR_LOOP_REGEX, "");
+      matchedString = matchedString.replace(constants_1.END_FOR_REGEX, "");
       matchedString = [
         forLoopString[0],
         matchedString,
@@ -256,7 +256,6 @@ function generateDocx(zipFiles, data) {
                     // Update the XML content in the zipFiles object
                     zipFiles.file(fileKey, parsedXmlString);
                     _a.label = 2;
-                  // eslint-disable-next-line no-fallthrough
                   case 2:
                     return [2 /*return*/];
                 }

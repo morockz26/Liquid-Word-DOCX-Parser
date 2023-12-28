@@ -51,8 +51,8 @@ export function formatTableXmlStringForLiquid(xmlString: string) {
     const forLoopString = matchedString.match(FOR_LOOP_REGEX);
     const endForLoopString = matchedString.match(END_FOR_REGEX);
     if (forLoopString && endForLoopString) {
-      matchedString = matchedString.replace(forLoopString[0], "");
-      matchedString = matchedString.replace(endForLoopString[0], "");
+      matchedString = matchedString.replace(FOR_LOOP_REGEX, "");
+      matchedString = matchedString.replace(END_FOR_REGEX, "");
       matchedString = [
         forLoopString[0],
         matchedString,
