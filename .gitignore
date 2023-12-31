@@ -25,6 +25,7 @@ yarn-error.log*
 # document data
 src/documents/
 src/output/
+src/utils/parser.js
 
 # Logs
 logs

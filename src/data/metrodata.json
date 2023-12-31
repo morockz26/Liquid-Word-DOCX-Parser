@@ -3,11 +3,11 @@
     "id": 1221047,
     "amount": "0.0",
     "identifier": "Business Name (EasyDocs Testing)",
-    "attachment_count": 6,
+    "attachment_count": 2,
     "status": "New Lead",
     "description": "test",
     "photo_url": null,
-    "created_at": "2023-11-08 13:10:38 -0500",
+    "created_at": "2023-11-08 18:10:38 -0500",
     "address": "180 Bloor St W 1204 , Toronto, ON M5S 1T6, Canada",
     "street": "180 Bloor Street West",
     "city": "Toronto",
@@ -47,7 +47,16 @@
     ],
     "deliveryroute_cf": "11",
     "deliveryinstructions_cf": "Ring door bell\nIf no one answers then leave in front of door",
-    "showliabilityclause_cf": "No"
+    "showliabilityclause_cf": "No",
+    "differentarcontact_cf": "Yes",
+    "arcontact_cf": "John Bob",
+    "aremail_cf": "johnb@fakeemail.com",
+    "arphonenumber_cf": "6476476477",
+    "differentdeliverycontact_cf": "No",
+    "deliverycontact_cf": null,
+    "deliverycontactphonenumber_cf": null,
+    "deliverytimerestrictions_cf": "no overnight deliveries",
+    "parkingdeliveryentrance_cf": "front entrance"
   },
   "campaign": {
     "id": "1088",
@@ -80,7 +89,6 @@
         "replacementcost_cf": 2.75,
         "arc_cf": "No"
       },
-      "inventory_cf": 2000,
       "quantity_cf": 20,
       "size_cf": "M",
       "notes_cf": null
@@ -103,7 +111,6 @@
         "replacementcost_cf": 19.95,
         "arc_cf": "No"
       },
-      "inventory_cf": 2000,
       "quantity_cf": 20,
       "notes_cf": null
     },
@@ -125,7 +132,6 @@
         "replacementcost_cf": 1.55,
         "arc_cf": "Yes"
       },
-      "inventory_cf": 2000,
       "quantity_cf": 2000,
       "notes_cf": null
     },
@@ -147,7 +153,6 @@
         "replacementcost_cf": 1.55,
         "arc_cf": "Yes"
       },
-      "inventory_cf": 1000,
       "quantity_cf": 100,
       "oncall_cf": "No",
       "notes_cf": null
@@ -170,7 +175,6 @@
         "replacementcost_cf": 44.95,
         "arc_cf": "No"
       },
-      "inventory_cf": 2000,
       "quantity_cf": 200,
       "oncall_cf": "No",
       "notes_cf": "TC notes"
@@ -193,7 +197,6 @@
         "replacementcost_cf": 44.95,
         "arc_cf": "No"
       },
-      "inventory_cf": 1000,
       "quantity_cf": 0,
       "oncall_cf": "Yes",
       "notes_cf": null
@@ -216,7 +219,6 @@
         "replacementcost_cf": 49.95,
         "arc_cf": "No"
       },
-      "inventory_cf": 10,
       "quantity_cf": 2,
       "oncall_cf": "No",
       "notes_cf": null
@@ -239,7 +241,6 @@
         "replacementcost_cf": 5.45,
         "arc_cf": "Yes"
       },
-      "inventory_cf": 1,
       "quantity_cf": 1,
       "notes_cf": null
     },
@@ -261,7 +262,6 @@
         "replacementcost_cf": 44.95,
         "arc_cf": "No"
       },
-      "inventory_cf": 100,
       "quantity_cf": 50,
       "oncall_cf": "Yes",
       "notes_cf": null
@@ -284,32 +284,8 @@
         "replacementcost_cf": 2.75,
         "arc_cf": "No"
       },
-      "inventory_cf": 10,
       "quantity_cf": 10,
-      "size_cf": "S",
-      "notes_cf": null
-    },
-    {
-      "price": null,
-      "name": "NAVY BLUE BIB APRON",
-      "description": null,
-      "purchasable": {
-        "price": 0.5,
-        "name": "NAVY BLUE BIB APRON",
-        "description": null,
-        "color_cf": "Navy Blue",
-        "sku_cf": "21004",
-        "supergroup_cf": "UNIFORMS",
-        "lowprice_cf": 0.36,
-        "mediumprice_cf": 0.44,
-        "level3price_cf": 0.5,
-        "purchaseprice_cf": 3.95,
-        "replacementcost_cf": 2.95,
-        "arc_cf": "No"
-      },
-      "inventory_cf": 10,
-      "quantity_cf": 5,
-      "size_cf": null,
+      "size_cf": "N/A",
       "notes_cf": null
     },
     {
@@ -330,7 +306,6 @@
         "replacementcost_cf": 1.55,
         "arc_cf": "Yes"
       },
-      "inventory_cf": 10,
       "quantity_cf": 5,
       "notes_cf": "Bar Mops"
     },
@@ -352,7 +327,6 @@
         "replacementcost_cf": 4.95,
         "arc_cf": "No"
       },
-      "inventory_cf": 10,
       "quantity_cf": 5,
       "notes_cf": "for laundry"
     },
@@ -374,7 +348,6 @@
         "replacementcost_cf": 39.95,
         "arc_cf": "No"
       },
-      "inventory_cf": 2,
       "quantity_cf": 1,
       "notes_cf": "bag stand"
     },
@@ -396,9 +369,30 @@
         "replacementcost_cf": 9.95,
         "arc_cf": "No"
       },
-      "inventory_cf": 20,
       "quantity_cf": 10,
       "notes_cf": "for the dust mops"
+    },
+    {
+      "price": null,
+      "name": "NAVY BLUE BIB APRON",
+      "description": null,
+      "purchasable": {
+        "price": 0.5,
+        "name": "NAVY BLUE BIB APRON",
+        "description": null,
+        "color_cf": "Navy Blue",
+        "sku_cf": "21004",
+        "supergroup_cf": "UNIFORMS",
+        "lowprice_cf": 0.36,
+        "mediumprice_cf": 0.44,
+        "level3price_cf": 0.5,
+        "purchaseprice_cf": 3.95,
+        "replacementcost_cf": 2.95,
+        "arc_cf": "No"
+      },
+      "quantity_cf": 5,
+      "size_cf": "2X",
+      "notes_cf": null
     }
   ],
   "primary_contact": {
