@@ -6,10 +6,11 @@ module.exports = {
   TABLE_ROW_REGEX: /<w:tr\b[^>]*>([\s\S]*?)<\/w:tr>/gm,
   LIQUID_REGEX_PATTERN:
     /(?:\{%\s*(?:(?:for|if)\s+[^{}]*\s*%})[\s\S]*?\{%\s*end(?:for|if)\s*%})|(?:\{%\s*assign\s+[^{}]*\s*%\})|(?:\{\{[^{}]*\}\})/gm,
-  LIQUID_TAG_SPLIT_REGEX: /<\/w:t>[\s\S]*?<(?:w:t)[^>^(?:tab)]*>/g,
+  LIQUID_TAG_SPLIT_REGEX: /<\/w:t>[\s\S]*?<w:t(?!ab)[^>]*>/g,
   specialCharacterMap: {
     "&lt;": "<",
     "&gt;": ">",
     "&amp;": "&",
+    "”": '"',
   },
 };
