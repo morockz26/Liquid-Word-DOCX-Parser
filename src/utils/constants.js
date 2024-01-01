@@ -1,6 +1,5 @@
 module.exports = {
-  BROKEN_TAG_REGEX:
-    /<w:p[^>]*>[\s\S]*?((?:{{|{%)[\s\S]*?(?:}}|%})[\s\S]*?(?=<\/w:t>))[\s\S]*?<\/w:p>/g,
+  BROKEN_TAG_REGEX: /(?:{{|{%|{)[\s\S]*?(?:}}|%}|})/g,
   END_FOR_REGEX: /{%\s*endfor\s*%}(?![\s\S.]*{%\s*endfor\s*%})/,
   FOR_LOOP_REGEX: /{%\s*for\s+\w+(\.\w+)?\s+in\s+\w+(\.\w+)?\s*%}/,
   TABLE_ROW_REGEX: /<w:tr\b[^>]*>([\s\S]*?)<\/w:tr>/gm,
