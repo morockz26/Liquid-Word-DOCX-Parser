@@ -1,12 +1,22 @@
-import JSZip from "jszip";
+import * as JSZip from "jszip";
 import { Liquid } from "liquidjs";
 import {
-  FOR_LOOP_REGEX,
   END_FOR_REGEX,
+  FOR_LOOP_REGEX,
+  LIQUID_TAG_REGEX,
+  LIQUID_TAG_SPLIT_REGEX,
   TABLE_ROW_REGEX,
-  LIQUID_REGEX_PATTERN,
-  specialCharacterMap,
 } from "./constants";
+
+type SpecialCharacterMap = Record<string, string>;
+
+const specialCharacterMap: SpecialCharacterMap = {
+  "&lt;": "<",
+  "&gt;": ">",
+  "&amp;": "&",
+  "“": '"', // Left double quotation mark
+  "”": '"', // Right double quotation mark
+};
 
 export function replaceSubstring(
   str: string,
@@ -25,7 +35,7 @@ export function replaceSubstring(
 }
 
 function registerCurrencyFilter(engine: Liquid) {
-  engine.registerFilter("currency", (value: any) => {
+  engine.registerFilter("currency", (value: string | number) => {
     const numberValue = parseFloat(value?.toString());
     return !Number.isNaN(numberValue) ? `$${numberValue.toFixed(2)}` : null;
   });
@@ -39,6 +49,46 @@ export function parseLiquidString(liquidString: string, data: object) {
   const parsedString = engine.parseAndRenderSync(liquidString, data);
 
   return parsedString;
+}
+
+export function escapeSpecialCharacters(xmlString: string) {
+  const escapedText = Object.keys(specialCharacterMap).reduce(
+    (xmlStringAcc, specialCharacter) => {
+      const result = xmlStringAcc.replace(
+        new RegExp(`${specialCharacter}`, "g"),
+        specialCharacterMap[specialCharacter]
+      );
+      return result;
+    },
+    xmlString
+  );
+  return escapedText;
+}
+
+export function cleanXml(xmlString: string) {
+  let cleanedXmlString = xmlString;
+  let match;
+
+  // eslint-disable-next-line no-cond-assign
+  while ((match = LIQUID_TAG_REGEX.exec(cleanedXmlString)) !== null) {
+    const matchedString = match[0];
+
+    const cleanedText = escapeSpecialCharacters(
+      matchedString.split(LIQUID_TAG_SPLIT_REGEX).join("")
+    );
+
+    cleanedXmlString = replaceSubstring(
+      cleanedXmlString,
+      match.index,
+      match.index + matchedString.length - 1,
+      cleanedText
+    );
+
+    // reset index where regex should continue search from to the last index of the replacement text
+    LIQUID_TAG_REGEX.lastIndex = match.index + cleanedText.length;
+  }
+
+  return cleanedXmlString;
 }
 
 export function formatTableXmlStringForLiquid(xmlString: string) {
@@ -67,20 +117,6 @@ export function formatTableXmlStringForLiquid(xmlString: string) {
     }
   }
   return formattedString;
-}
-
-export function escapeSpecialCharacters(xmlString: string) {
-  // TODO: Need to fix the special characters inside liquid tags
-  return xmlString;
-}
-
-export function cleanXml(xmlString: string) {
-  // TODO: Need to clean the xmlstring
-  // The paragraphs are still in a <w:p> tag
-  // Find all liquid tags, and find a way to put all the text
-  // Account for page breaks, xml:space="preserve", etc
-  // back together in one <w:t>
-  return escapeSpecialCharacters(xmlString);
 }
 
 export async function parseXmlFile(xmlFile: JSZip.JSZipObject, data: object) {
