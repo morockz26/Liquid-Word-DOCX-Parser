@@ -3,20 +3,13 @@ import AceEditor from "react-ace";
 import JSZip from "jszip";
 import { Flex, Text } from "@wingmate/toolkit";
 import { Button } from "wm-ui-toolkit";
+import { DocumentType } from "../../types/Document";
 import { cleanXml, generateDocx, getXmlString } from "../../utils/parser";
 import { DocumentPreview } from "../DocumentPreview/DocumentPreview";
 
 import "ace-builds/src-noconflict/mode-json";
 import "ace-builds/src-noconflict/theme-monokai";
 import "./ErrorChecker.scss";
-
-type DocumentType =
-  | string
-  | Blob
-  | number[]
-  | ArrayBuffer
-  | Uint8Array
-  | Buffer;
 
 export const ErrorChecker: React.FC = () => {
   const [data, setData] = useState<string>("{}");
@@ -75,7 +68,7 @@ export const ErrorChecker: React.FC = () => {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             unzippedDocument as any,
             JSON.parse(data),
-            "arraybuffer"
+            "blob"
           );
 
           setParsedDocument(generatedFile);
@@ -85,7 +78,11 @@ export const ErrorChecker: React.FC = () => {
 
           setParsedXmlString(await getDocumentXmlString(unzippedGeneratedFile));
         } catch (err) {
-          setError(err);
+          setError(
+            new Error(
+              "Failed to parsed document. Please check your liquid tags"
+            )
+          );
         }
       }
     };
@@ -174,7 +171,7 @@ export const ErrorChecker: React.FC = () => {
           gap="middle"
         >
           {renderCopyButtons()}
-          {parsedDocument ? (
+          {xmlString ? (
             <Flex vertical gap="middle" align="center">
               <Flex gap="middle">
                 <Button type="light" onClick={openDocumentPreviewModal}>
@@ -197,6 +194,7 @@ export const ErrorChecker: React.FC = () => {
       <DocumentPreview
         isModalOpen={isPreviewModalOpen}
         onRequestClose={closeDocumentPreviewModal}
+        document={parsedDocument}
       />
     </Flex>
   );
