@@ -7,19 +7,19 @@ import { DocumentType } from "../../types/Document";
 import "./DocumentPreview.scss";
 
 export interface IDocumentPreviewProps {
-  document?: DocumentType;
+  parsedDocument?: DocumentType;
   isModalOpen: boolean;
   onRequestClose: () => void;
 }
 
 export const DocumentPreview: React.FC<IDocumentPreviewProps> = ({
-  document,
   isModalOpen,
   onRequestClose,
+  parsedDocument,
 }) => {
   const download = () => {
-    if (document) {
-      FileSaver.saveAs(document as Blob, "output.docx");
+    if (parsedDocument) {
+      FileSaver.saveAs(parsedDocument as Blob, "output.docx");
     }
   };
 

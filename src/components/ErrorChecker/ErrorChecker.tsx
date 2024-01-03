@@ -194,7 +194,7 @@ export const ErrorChecker: React.FC = () => {
       <DocumentPreview
         isModalOpen={isPreviewModalOpen}
         onRequestClose={closeDocumentPreviewModal}
-        document={parsedDocument}
+        parsedDocument={parsedDocument}
       />
     </Flex>
   );
