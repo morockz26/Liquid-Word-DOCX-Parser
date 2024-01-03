@@ -9,12 +9,23 @@ import { Suspense } from "./components/Suspense/Suspense";
 import { ErrorPageRoute } from "./routes/ErrorPageRoute";
 import "./App.scss";
 
+const ErrorChecker = lazy(
+  () => import("./components/ErrorChecker/ErrorChecker")
+);
 const ErrorPage = lazy(() => import("./components/ErrorPage/ErrorPage"));
 
 const App: React.FC = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/">
+        <Route
+          path=""
+          element={
+            <Suspense>
+              <ErrorChecker />
+            </Suspense>
+          }
+        />
         <Route path="error">
           <Route
             path="404"

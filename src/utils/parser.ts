@@ -119,6 +119,13 @@ export function formatTableXmlStringForLiquid(xmlString: string) {
   return formattedString;
 }
 
+export async function getXmlString(zipFiles: JSZip) {
+  const documentXml: JSZip.JSZipObject = zipFiles.files["word/document.xml"];
+  const xmlString = await documentXml.async("string");
+
+  return xmlString;
+}
+
 export async function parseXmlFile(xmlFile: JSZip.JSZipObject, data: object) {
   const xmlString = await xmlFile.async("string");
 
@@ -132,7 +139,11 @@ export async function parseXmlFile(xmlFile: JSZip.JSZipObject, data: object) {
   return parsedXmlString;
 }
 
-export async function generateDocx(zipFiles: JSZip, data: object) {
+export async function generateDocx(
+  zipFiles: JSZip,
+  data: object,
+  type: JSZip.OutputType
+) {
   const parsedPromises = Object.keys(zipFiles.files).map(async (fileKey) => {
     if (fileKey.startsWith("word/") && fileKey.endsWith(".xml")) {
       const parsedXmlString = await parseXmlFile(zipFiles.files[fileKey], data);
@@ -145,7 +156,7 @@ export async function generateDocx(zipFiles: JSZip, data: object) {
   await Promise.all(parsedPromises);
 
   // Generate the updated zip file
-  const updatedZipFile = await zipFiles.generateAsync({ type: "nodebuffer" });
+  const updatedZipFile = await zipFiles.generateAsync({ type });
 
   return updatedZipFile;
 }

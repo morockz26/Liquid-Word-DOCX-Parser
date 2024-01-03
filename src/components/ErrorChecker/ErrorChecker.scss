@@ -1,0 +1,20 @@
+.ErrorChecker {
+  height: 90vh;
+  padding: 40px;
+
+  .ErrorChecker__header {
+    .header__title {
+      text-align: center;
+    }
+
+    .header__fileInput {
+      width: 300px;
+    }
+  }
+
+  .ErrorChecker__editors .editors__result {
+    .Text {
+      margin-top: 120px;
+    }
+  }
+}

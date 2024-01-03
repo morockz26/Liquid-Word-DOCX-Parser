@@ -40,7 +40,7 @@ function main() {
     .then(async (data) => {
       const zipFiles = await getFile();
 
-      const generatedFile = await generateDocx(zipFiles, data);
+      const generatedFile = await generateDocx(zipFiles, data, "nodebuffer");
 
       // Save the updated zip file
       const outputPath = path.resolve(
