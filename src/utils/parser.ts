@@ -8,14 +8,20 @@ import {
   TABLE_ROW_REGEX,
 } from "./constants";
 
-type SpecialCharacterMap = Record<string, string>;
+type CharacterMap = Record<string, string>;
 
-const specialCharacterMap: SpecialCharacterMap = {
+const specialCharacterMap: CharacterMap = {
   "&lt;": "<",
   "&gt;": ">",
   "&amp;": "&",
   "“": '"', // Left double quotation mark
   "”": '"', // Right double quotation mark
+};
+
+const symbolMap: CharacterMap = {
+  "<": "&lt;",
+  ">": "&gt;",
+  "&": "&amp;",
 };
 
 export function replaceSubstring(
@@ -63,6 +69,10 @@ export function escapeSpecialCharacters(xmlString: string) {
     xmlString
   );
   return escapedText;
+}
+
+export function cleanData(data: object) {
+  return data;
 }
 
 export function cleanXml(xmlString: string) {
@@ -144,9 +154,14 @@ export async function generateDocx(
   data: object,
   type: JSZip.OutputType
 ) {
+  const cleanedData = cleanData(data); // clean document data of any special character
+
   const parsedPromises = Object.keys(zipFiles.files).map(async (fileKey) => {
     if (fileKey.startsWith("word/") && fileKey.endsWith(".xml")) {
-      const parsedXmlString = await parseXmlFile(zipFiles.files[fileKey], data);
+      const parsedXmlString = await parseXmlFile(
+        zipFiles.files[fileKey],
+        cleanedData
+      );
 
       // Update the XML content in the zipFiles object
       zipFiles.file(fileKey, parsedXmlString);
