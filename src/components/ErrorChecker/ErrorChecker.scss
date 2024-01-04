@@ -12,9 +12,15 @@
     }
   }
 
-  .ErrorChecker__editors .editors__result {
-    .Text {
-      margin-top: 120px;
+  .ErrorChecker__editors {
+    .editors__dataEditor .Text.S {
+      font-style: italic;
+    }
+
+    .editors__result {
+      .Text.H3 {
+        margin-top: 120px;
+      }
     }
   }
 }

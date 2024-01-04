@@ -84,7 +84,7 @@ export const ErrorChecker: React.FC = () => {
         } catch (err) {
           setError(
             new Error(
-              "Failed to parse document. Please check your liquid tags and make your data in the editor is valid"
+              "Failed to parse document. Please check your liquid tags and make sure your data in the editor is valid"
             )
           );
         } finally {
@@ -154,7 +154,10 @@ export const ErrorChecker: React.FC = () => {
         />
       </Flex>
       <Flex rootClassName="ErrorChecker__editors" gap="large" flex={1}>
-        <Flex vertical gap="large" flex={3}>
+        <Flex rootClassName="editors__dataEditor" vertical gap="small" flex={3}>
+          <Text type="S" weight="Light">
+            Enter JSON Data
+          </Text>
           <AceEditor
             mode="json"
             defaultValue={data}
