@@ -14,7 +14,8 @@ import "./ErrorChecker.scss";
 export const ErrorChecker: React.FC = () => {
   const [data, setData] = useState<string>("{}");
   const [document, setDocument] = useState<File>();
-  const [error, setError] = useState<unknown>();
+  const [error, setError] = useState<Error>();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [xmlString, setXmlString] = useState<string>("");
   const [parsedDocument, setParsedDocument] = useState<DocumentType>();
   const [parsedXmlString, setParsedXmlString] = useState<string>("");
@@ -59,6 +60,9 @@ export const ErrorChecker: React.FC = () => {
   useEffect(() => {
     const unzipAndGenerate = async () => {
       if (document) {
+        setError(undefined);
+        setIsLoading(true);
+
         const unzippedDocument = await JSZip.loadAsync(document);
 
         setXmlString(await getDocumentXmlString(unzippedDocument));
@@ -80,9 +84,11 @@ export const ErrorChecker: React.FC = () => {
         } catch (err) {
           setError(
             new Error(
-              "Failed to parsed document. Please check your liquid tags"
+              "Failed to parse document. Please check your liquid tags and make your data in the editor is valid"
             )
           );
+        } finally {
+          setIsLoading(false);
         }
       }
     };
@@ -172,18 +178,27 @@ export const ErrorChecker: React.FC = () => {
         >
           {renderCopyButtons()}
           {xmlString ? (
-            <Flex vertical gap="middle" align="center">
-              <Flex gap="middle">
-                <Button type="light" onClick={openDocumentPreviewModal}>
-                  View Parsed Document
-                </Button>
+            !isLoading && (
+              <Flex vertical gap="middle" align="center">
+                {!error ? (
+                  <>
+                    <Flex gap="middle">
+                      <Button type="light" onClick={openDocumentPreviewModal}>
+                        View Parsed Document
+                      </Button>
+                    </Flex>
+                    <Text type="H3" weight="Semi">
+                      All Set! Your document was successfully parsed without any
+                      errors.
+                    </Text>
+                  </>
+                ) : (
+                  <Text type="H3" weight="Semi">
+                    {error.message}
+                  </Text>
+                )}
               </Flex>
-              <Text type="H3" weight="Semi">
-                {!error
-                  ? "All Set! Your document was successfully parsed without any errors."
-                  : error}
-              </Text>
-            </Flex>
+            )
           ) : (
             <Text type="H3" weight="Semi">
               Upload a document to check for errors
