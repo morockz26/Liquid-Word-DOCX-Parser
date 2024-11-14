@@ -4,5 +4,11 @@ Created this project as a prototype for Wingmate, to test document parsing and g
 
 ## Available Scripts
 
+`npm run lint`
+
+`npm run stylelint`
+
 `npm run dev`
+
+`npm run test`
 
